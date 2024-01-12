@@ -8,7 +8,7 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 import java.util.Date;
-
+//Entity or model the classes represent the structure of your data and are often annotated with JPA annotations.
 @Entity
 @Getter
 @Setter
