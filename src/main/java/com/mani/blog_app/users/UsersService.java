@@ -1,21 +1,22 @@
 package com.mani.blog_app.users;
 
 import com.mani.blog_app.users.dtos.CreateUserRequest;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UsersService {
     private final UsersRepository usersRepository;
+    private final ModelMapper modelMapper;
 
-    public UsersService(UsersRepository usersRepository) {
+    public UsersService(UsersRepository usersRepository, ModelMapper modelMapper) {
         this.usersRepository = usersRepository;
+        this.modelMapper = modelMapper;
     }
+
     public UserEntity createUser(CreateUserRequest req){
-        var newUser = UserEntity.builder()
-                .username(req.getUsername())
-//                .password(password) // TODO: encrypt password
-                .email(req.getEmail())
-                .build();
+        UserEntity newUser= modelMapper.map(req, UserEntity.class);
+        // TODO: Encrypt and save Password as well
 
         return usersRepository.save(newUser);
     }
@@ -31,11 +32,9 @@ public class UsersService {
         return user;
     }
     public static class UserNotFoundException extends IllegalArgumentException{
-        public UserNotFoundException(String username) {
-            super("User with username: " + username + "not found");
+        public UserNotFoundException(String username) { super("Username : " + username + " not found");
         }
-        public UserNotFoundException(Long authorId) {
-            super("User with id: " + authorId + "not found");
+        public UserNotFoundException(Long authorId) { super("User Id: " + authorId + " not found");
         }
     }
 }

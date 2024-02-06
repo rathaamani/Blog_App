@@ -9,9 +9,7 @@ public class AritclesService {
     private ArticleRepository articleRepository;
     private UsersRepository usersRepository;
 
-    public AritclesService(ArticleRepository articleRepository, UsersRepository usersRepository) {
-        this.articleRepository = articleRepository;
-        this.usersRepository = usersRepository;
+    public AritclesService() {
     }
 
     public AritclesService(ArticleRepository articleRepository){

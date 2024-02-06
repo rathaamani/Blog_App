@@ -8,7 +8,6 @@ import org.springframework.lang.Nullable;
 @Entity
 @Getter
 @Setter
-@Builder
 @ToString
 @RequiredArgsConstructor
 @AllArgsConstructor

@@ -12,6 +12,10 @@ import org.springframework.test.context.ActiveProfiles;
 public class UsersServiceTests {
     @Autowired
     UsersService usersService;
+    // if i don't want use the JPA database... it get repository Entitys
+   // @MockBean
+  // 
+
     @Test
     void can_create_users(){
         var user = usersService.createUser(new CreateUserRequest(
