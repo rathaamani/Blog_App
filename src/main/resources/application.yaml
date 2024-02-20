@@ -11,4 +11,3 @@ spring:
   jpa:
     hibernate:
       ddl-auto: create # in prod, use update, NOT create
-
